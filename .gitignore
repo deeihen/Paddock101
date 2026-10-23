@@ -1,0 +1,8 @@
+node_modules/
+dist/
+# original Sketchfab downloads (large); the optimized model lives in public/models
+models-src/
+.DS_Store
+*.log
+.vscode/
+.idea/

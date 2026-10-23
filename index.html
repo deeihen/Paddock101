@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paddock 101 — Formula 1 from zero</title>
+  <meta name="description" content="A scroll-driven field guide to Formula 1: from total beginner to enthusiast." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%23111418%22/%3E%3Cpath d=%22M7 21l6-10h12l-6 10z%22 fill=%22%23e10600%22/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Titillium+Web:ital,wght@0,400;0,600;0,700;0,900;1,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <canvas id="gl" role="img" aria-label="Blueprint-style 3D Formula 1 car that moves, rotates and comes apart as you scroll."></canvas>
+  <div class="labels" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="#top">PADDOCK<span>/101</span></a>
+    <nav class="nav__links" aria-label="Chapters">
+      <a href="#basics">Basics</a>
+      <a href="#car">The car</a>
+      <a href="#racecraft">Race craft</a>
+      <a href="#world">World</a>
+    </nav>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span class="hud__label">CH.00 — START</span>
+    <span class="hud__bar"><i></i></span>
+  </div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" data-cam="hero">
+      <h1 class="hero__title">Zero to<br />Paddock.</h1>
+      <p class="hero__sub">F1 from zero. Scroll.</p>
+      <a class="cta" href="#basics">Start the guide <span class="cta__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5" /></svg></span></a>
+    </section>
+
+
+    <!-- LIGHTS OUT (pinned) -->
+    <section class="lights" data-cam="lights" data-chapter="CH.00 — LIGHTS OUT">
+      <div class="lights__rig" aria-hidden="true">
+        <div class="light"><i></i><i></i></div>
+        <div class="light"><i></i><i></i></div>
+        <div class="light"><i></i><i></i></div>
+        <div class="light"><i></i><i></i></div>
+        <div class="light"><i></i><i></i></div>
+      </div>
+      <p class="lights__caption">Five red lights come on, one by one. When they go out, the race starts.</p>
+    </section>
+    <div class="launch" data-cam="launch"><p class="launch__text">Lights out<br />and away we go.</p></div>
+
+    <!-- CH 01 -->
+    <section class="chapter" id="basics" data-chapter="CH.01 — THE BASICS">
+      <header class="chapter__head">
+        <span class="chapter__num">01</span>
+        <h2>The Basics</h2>
+      </header>
+
+      <div class="step" data-cam="basics-a">
+        <article class="card"><div class="card__core">
+          <h3>The top tier of single-seater racing</h3>
+          <p>Formula 1 is a world championship. Teams design and build their own cars, so it's a race between engineers as much as between drivers.</p>
+          <dl class="stats">
+            <div><dt>Teams</dt><dd>11</dd></div>
+            <div><dt>Drivers</dt><dd>22</dd></div>
+            <div><dt>Races / yr</dt><dd>24</dd></div>
+          </dl>
+        </div></article>
+      </div>
+
+      <div class="step" data-cam="basics-b">
+        <article class="card"><div class="card__core">
+          <h3>Three days, one Sunday that counts most</h3>
+          <ol class="weekend">
+            <li><span class="mono">FRI</span><b>Practice 1 &amp; 2</b><em>Teams test setups. Nothing is scored.</em></li>
+            <li><span class="mono">SAT</span><b>Practice 3 + Qualifying</b><em>Q1, Q2, Q3: the slowest six drop out in each of the first two rounds. The fastest in Q3 starts on <strong>pole</strong>.</em></li>
+            <li><span class="mono">SUN</span><b>Grand Prix</b><em>About 305 km, or roughly 90 minutes of racing.</em></li>
+          </ol>
+        </div></article>
+      </div>
+
+      <div class="step" data-cam="basics-c">
+        <article class="card"><div class="card__core">
+          <h3>Only the top ten score</h3>
+          <ul class="points" aria-label="Points for positions 1 to 10">
+            <li style="--v:25"><span>P1</span><i></i><b>25</b></li>
+            <li style="--v:18"><span>P2</span><i></i><b>18</b></li>
+            <li style="--v:15"><span>P3</span><i></i><b>15</b></li>
+            <li style="--v:12"><span>P4</span><i></i><b>12</b></li>
+            <li style="--v:10"><span>P5</span><i></i><b>10</b></li>
+            <li style="--v:8"><span>P6</span><i></i><b>8</b></li>
+            <li style="--v:6"><span>P7</span><i></i><b>6</b></li>
+            <li style="--v:4"><span>P8</span><i></i><b>4</b></li>
+            <li style="--v:2"><span>P9</span><i></i><b>2</b></li>
+            <li style="--v:1"><span>P10</span><i></i><b>1</b></li>
+          </ul>
+        </div></article>
+      </div>
+
+      <div class="step" data-cam="basics-d">
+        <article class="card"><div class="card__core">
+          <h3>Two championships run at the same time</h3>
+          <div class="duo">
+            <div><b>Drivers’</b><p>Each driver's points over the season. The winner is World Champion.</p></div>
+            <div><b>Constructors’</b><p>Both of a team's drivers' points added together. This decides the prize money.</p></div>
+          </div>
+        </div></article>
+      </div>
+    </section>
+
+
+    <div class="band" aria-hidden="true"><div class="band__track"><span>350 KM/H</span><span>·</span><span>UP TO 5G IN CORNERS</span><span>·</span><span>1.80S PIT STOP</span><span>·</span><span>350 KM/H</span><span>·</span><span>UP TO 5G IN CORNERS</span><span>·</span><span>1.80S PIT STOP</span><span>·</span></div></div>
+
+    <!-- CH 02 -->
+    <section class="chapter" id="car" data-chapter="CH.02 — THE CAR">
+      <header class="chapter__head">
+        <span class="chapter__num">02</span>
+        <h2>The Car</h2>
+      </header>
+
+      <div class="step" data-cam="car-a">
+        <article class="card"><div class="card__core">
+          <h3>A carbon-fibre rocket on four tyres</h3>
+          <dl class="stats">
+            <div><dt>0–100 km/h</dt><dd>~2.5s</dd></div>
+            <div><dt>Top speed</dt><dd>~350</dd></div>
+            <div><dt>Min. weight</dt><dd>768kg</dd></div>
+          </dl>
+        </div></article>
+      </div>
+
+      <div class="step" data-cam="car-b">
+        <article class="card"><div class="card__core">
+          <h3>Five systems, one machine</h3>
+          <p>The <strong>monocoque</strong> is a carbon survival cell the driver sits in. Everything else bolts onto it: the power unit, the aerodynamic surfaces, the suspension and the tyres.</p>
+        </div></article>
+      </div>
+
+      <div class="step" data-cam="car-c">
+        <article class="card"><div class="card__core">
+          <h3>Half engine, half battery</h3>
+          <p>It pairs a 1.6-litre turbocharged V6 with an electric motor. Since 2026, the electric side delivers about half of the roughly 1,000 hp, and the fuel is 100% sustainable.</p>
+        </div></article>
+      </div>
+
+      <div class="step" data-cam="car-d">
+        <article class="card"><div class="card__core">
+          <h3>Wings that push down, not up</h3>
+          <p>The wings and the floor work like upside-down aeroplane wings. The resulting <strong>downforce</strong> presses the car into the track, so it can corner far faster than grip alone would allow.</p>
+          <p>In 2026 the wings became <strong>active</strong>. They flatten on straights for speed and close up in corners for grip. DRS, the overtaking flap used from 2011 to 2025, is gone. Its replacement, <strong>Overtake Mode</strong>, gives a chasing driver extra electric power.</p>
+        </div></article>
+      </div>
+
+      <div class="step" data-cam="car-e">
+        <article class="card"><div class="card__core">
+          <h3>The halo</h3>
+          <p>The halo is a titanium hoop over the cockpit, mandatory since 2018. It can carry about 12 tonnes, roughly the weight of a double-decker bus. In 2020 it saved Romain Grosjean in a fiery crash in Bahrain.</p>
+        </div></article>
+      </div>
+    </section>
+
+
+    <div class="band" aria-hidden="true"><div class="band__track"><span>11 TEAMS</span><span>·</span><span>22 DRIVERS</span><span>·</span><span>24 RACES</span><span>·</span><span>2 TITLES</span><span>·</span><span>11 TEAMS</span><span>·</span><span>22 DRIVERS</span><span>·</span><span>24 RACES</span><span>·</span><span>2 TITLES</span><span>·</span></div></div>
+
+    <!-- CH 03 -->
+    <section class="chapter" id="racecraft" data-chapter="CH.03 — RACE CRAFT">
+      <header class="chapter__head">
+        <span class="chapter__num">03</span>
+        <h2>Race Craft</h2>
+      </header>
+
+      <div class="step" data-cam="tyre">
+        <article class="card"><div class="card__core">
+          <h3>Softer is faster but wears out sooner</h3>
+          <div class="chips" role="group" aria-label="Tyre compounds">
+            <button class="chip" data-compound="soft" aria-pressed="true"><i style="--c:#E10600"></i>Soft</button>
+            <button class="chip" data-compound="medium" aria-pressed="false"><i style="--c:#F2C200"></i>Medium</button>
+            <button class="chip" data-compound="hard" aria-pressed="false"><i style="--c:#FFFFFF"></i>Hard</button>
+            <button class="chip" data-compound="inter" aria-pressed="false"><i style="--c:#2BA84A"></i>Inter</button>
+            <button class="chip" data-compound="wet" aria-pressed="false"><i style="--c:#1F6FEB"></i>Wet</button>
+          </div>
+          <p class="tyre-desc" aria-live="polite">Soft (red): the most grip but the shortest life. Teams use it for qualifying and short stints.</p>
+        </div></article>
+      </div>
+
+      <div class="step" data-cam="strategy">
+        <article class="card"><div class="card__core">
+          <h3>Races are won in the pit lane</h3>
+          <p>The crew changes all four tyres in about <strong>2 seconds</strong>. The record is 1.80s.</p>
+          <div class="duo">
+            <div><b>Undercut</b><p>Pit before your rival. Fresh tyres are faster, so you can pass them while they are still in the pits.</p></div>
+            <div><b>Overcut</b><p>Stay out longer on a clear track, then pit and come out ahead.</p></div>
+          </div>
+        </div></article>
+      </div>
+    </section>
+
+    <!-- FLAGS (horizontal) -->
+    <section class="flags" id="flags" data-cam="flags" data-chapter="CH.03 — FLAGS">
+      <div class="flags__intro">
+        <h2>Flags</h2>
+      </div>
+      <div class="flags__track">
+        <figure class="flag"><span class="flag__swatch" style="--f:#2BA84A"></span><figcaption><b>Green</b>The track is clear. Race on.</figcaption></figure>
+        <figure class="flag"><span class="flag__swatch" style="--f:#F2C200"></span><figcaption><b>Yellow</b>Danger ahead. Slow down and don't overtake.</figcaption></figure>
+        <figure class="flag"><span class="flag__swatch" style="--f:#E10600"></span><figcaption><b>Red</b>The session is stopped. Everyone returns to the pit lane.</figcaption></figure>
+        <figure class="flag"><span class="flag__swatch" style="--f:#1F6FEB"></span><figcaption><b>Blue</b>A faster car is lapping you. Let it pass.</figcaption></figure>
+        <figure class="flag"><span class="flag__swatch flag__swatch--bw"></span><figcaption><b>Black &amp; white</b>A warning for unsporting driving.</figcaption></figure>
+        <figure class="flag"><span class="flag__swatch" style="--f:#111418"></span><figcaption><b>Black</b>Disqualified. Return to the pits.</figcaption></figure>
+        <figure class="flag"><span class="flag__swatch flag__swatch--sc">SC</span><figcaption><b>Safety Car</b>The field bunches up behind a road car while a crash is cleared. A <em>VSC</em> (Virtual Safety Car) is the same idea, with no physical car on track.</figcaption></figure>
+        <figure class="flag"><span class="flag__swatch flag__swatch--chq"></span><figcaption><b>Chequered</b>The race is over. Bring it home.</figcaption></figure>
+      </div>
+    </section>
+
+
+    <!-- TIMING TOWER (pinned, scroll plays a simulated race) -->
+    <section class="timing" id="timing" data-chapter="CH.03 — TIMING TOWER">
+      <div class="timing__inner">
+        <div class="bt-wrap" data-mode="interval" data-focus="pos">
+          <div class="bt">
+            <header class="bt__head"><span class="bt__mark" aria-hidden="true"></span><b>PADDOCK 101</b></header>
+            <div class="bt__lap">LAP <b>1</b>/57</div>
+            <ol class="bt__rows"></ol>
+          </div>
+          <div class="flpop" hidden><span class="flpop__icon" aria-hidden="true"></span><span class="flpop__label">FASTEST LAP</span><b class="flpop__drv"></b><span class="flpop__time"></span></div>
+          <div class="rc" hidden><span class="rc__label">RACE CONTROL</span><span class="rc__msg"></span></div>
+        </div>
+
+        <div class="callouts">
+          <article class="callout" data-from="1" data-focus="pos" data-mode="interval"><h3>Order</h3><p>P1 to P22. Team colour, driver, tyre.</p></article>
+          <article class="callout" data-from="7" data-focus="gap" data-mode="leader"><h3>Interval / Leader</h3><p>Gap to the car ahead, or to P1. <span class="tag tag--ovt">OVT</span> means within 1s, so the driver gets an extra electric boost.</p></article>
+          <article class="callout" data-from="13" data-focus="tyre" data-mode="tyre"><h3>Tyres</h3><p><b class="t-s">S</b> <b class="t-m">M</b> <b class="t-h">H</b> plus how many laps old the tyres are. <span class="tag tag--pit">PIT</span> means the car is in the pit lane.</p></article>
+          <article class="callout" data-from="24" data-focus="rc" data-mode="interval"><h3>Race control</h3><p>Track limits, penalties, investigations.</p></article>
+          <article class="callout" data-from="32" data-focus="status" data-mode="interval"><h3>Safety car</h3><p>Header turns yellow. The field bunches up.</p></article>
+          <article class="callout" data-from="40" data-focus="fl" data-mode="pits"><h3>Fastest lap</h3><p>Purple. The tower switches to pit-stop counts.</p></article>
+          <article class="callout" data-from="57" data-focus="pos" data-mode="leader"><h3>Finish</h3><p>Top ten score points.</p></article>
+          <p class="timing__note mono">Simulated race</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH 04 -->
+    <section class="chapter" id="world" data-chapter="CH.04 — THE WORLD">
+      <header class="chapter__head">
+        <span class="chapter__num">04</span>
+        <h2>Tracks, Teams &amp; History</h2>
+      </header>
+
+      <div class="step" data-cam="track">
+        <article class="card"><div class="card__core">
+          <h3>Three sectors and three colours</h3>
+          <p>Each lap is split into three timed <strong>sectors</strong>. The timing screens colour every sector time:</p>
+          <ul class="sectors">
+            <li><i style="--c:#8E3FD6"></i><b>Purple</b> The fastest of anyone</li>
+            <li><i style="--c:#2BA84A"></i><b>Green</b> A personal best</li>
+            <li><i style="--c:#F2C200"></i><b>Yellow</b> Slower than their best</li>
+          </ul>
+        </div></article>
+      </div>
+
+      <div class="step step--wide" data-cam="circuits">
+        <div class="bento">
+          <article class="card card--lg"><div class="card__core"><p class="eyebrow mono">MONACO</p><h3>The crown jewel</h3><p>Barriers inches away, almost impossible to overtake. Qualifying is everything here.</p></div></article>
+          <article class="card"><div class="card__core"><p class="eyebrow mono">MONZA · ITALY</p><h3>Temple of speed</h3><p>Long straights, low downforce, and the Ferrari faithful.</p></div></article>
+          <article class="card"><div class="card__core"><p class="eyebrow mono">SPA · BELGIUM</p><h3>Eau Rouge</h3><p>The most famous uphill corner in racing.</p></div></article>
+          <article class="card"><div class="card__core"><p class="eyebrow mono">SILVERSTONE · UK</p><h3>Where it began</h3><p>The first ever World Championship race was held here in 1950.</p></div></article>
+          <article class="card card--lg"><div class="card__core"><p class="eyebrow mono">SUZUKA · JAPAN</p><h3>The figure-of-eight</h3><p>A track that crosses over itself, and a driver favourite for its flowing esses.</p></div></article>
+        </div>
+      </div>
+
+      <div class="step step--wide" data-cam="teams">
+        <article class="card"><div class="card__core">
+          <h3>Eleven teams, two seats each</h3>
+          <ul class="teams">
+            <li><b>Ferrari</b><span>Maranello, IT</span></li>
+            <li><b>McLaren</b><span>Woking, UK</span></li>
+            <li><b>Mercedes</b><span>Brackley, UK</span></li>
+            <li><b>Red Bull Racing</b><span>Milton Keynes, UK</span></li>
+            <li><b>Aston Martin</b><span>Silverstone, UK</span></li>
+            <li><b>Alpine</b><span>Enstone, UK</span></li>
+            <li><b>Williams</b><span>Grove, UK</span></li>
+            <li><b>Racing Bulls</b><span>Faenza, IT</span></li>
+            <li><b>Haas</b><span>Kannapolis, US</span></li>
+            <li><b>Audi</b><span>Hinwil, CH</span></li>
+            <li><b>Cadillac</b><span>Fishers, US</span></li>
+          </ul>
+        </div></article>
+      </div>
+
+      <div class="step step--wide" data-cam="history">
+        <div class="history">
+          <h3 class="history__title">75 years in eight moments</h3>
+          <ol class="timeline">
+            <li><span class="mono">1950</span><p>The first World Championship race is held at Silverstone.</p></li>
+            <li><span class="mono">1968</span><p>Sponsor liveries arrive. Cars stop being painted in national colours.</p></li>
+            <li><span class="mono">1977</span><p>The Lotus 78 introduces ground effect, which uses the floor to suck the car down.</p></li>
+            <li><span class="mono">1988</span><p>McLaren, with Senna and Prost, wins 15 of 16 races.</p></li>
+            <li><span class="mono">1994</span><p>Senna's death at Imola sparks a safety revolution.</p></li>
+            <li><span class="mono">2014</span><p>The hybrid era begins, with V6 turbos plus energy recovery.</p></li>
+            <li><span class="mono">2018</span><p>The halo becomes mandatory.</p></li>
+            <li><span class="mono">2026</span><p>A new era of active aero, a 50/50 split between combustion and electric power, sustainable fuel, and an 11th team.</p></li>
+          </ol>
+          <ul class="legends" aria-label="Most world titles">
+            <li><b>7</b>Schumacher</li>
+            <li><b>7</b>Hamilton</li>
+            <li><b>5</b>Fangio</li>
+            <li><b>4</b>Prost</li>
+            <li><b>4</b>Vettel</li>
+            <li><b>4</b>Verstappen</li>
+            <li><b>3</b>Senna</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINISH -->
+    <section class="finish" data-cam="finish" data-chapter="CH.05 — CHEQUERED">
+      <h2 class="finish__title">You speak paddock now.</h2>
+      <dl class="glossary">
+        <div><dt>“Box, box”</dt><dd>Come into the pits this lap.</dd></div>
+        <div><dt>Dirty air</dt><dd>Turbulent air behind a car that robs the follower of downforce.</dd></div>
+        <div><dt>Slipstream / tow</dt><dd>Following closely on a straight to get a speed boost.</dd></div>
+        <div><dt>Parc fermé</dt><dd>After qualifying, teams can barely touch the car.</dd></div>
+        <div><dt>Lift and coast</dt><dd>Lifting off early before braking to save fuel or energy.</dd></div>
+        <div><dt>Graining</dt><dd>Rubber balls up on the tyre surface and grip drops off.</dd></div>
+      </dl>
+      <a class="cta" href="#top">Back to the start <span class="cta__icon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" /></svg></span></a>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span>PADDOCK/101 — an unofficial fan guide. Not affiliated with Formula 1.</span>
+    <span>3D model: <a href="https://sketchfab.com/3d-models/2026-f1-audi-fom-update-f2b3a61651b347ad8cd82d497bcb408e">“2026 | F1 Audi FOM Update”</a> by kevin (sohyalebret), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified for web</span>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
